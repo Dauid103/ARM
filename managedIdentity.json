@@ -1,0 +1,31 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "userAssignedIdentities_apigw_name": {
+            "type": "string"
+        },
+        "userAssignedIdentities_tenantId": {
+            "type": "string"
+        },
+        "userAssignedIdentities_principalId": {
+            "type": "string"
+        },
+        "userAssignedIdentities_clientId": {
+            "type": "string"
+        }
+    },
+    "resources": [   
+        {
+            "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
+            "apiVersion": "2018-11-30",
+            "name": "[parameters('userAssignedIdentities_apigw_name')]",
+            "location": "westeurope",
+            "properties": {
+                "tenantId": "[parameters('userAssignedIdentities_tenantId')]",
+                "principalId": "[parameters('userAssignedIdentities_principalId')]",
+                "clientId": "[parameters('userAssignedIdentities_clientId')]"
+            }
+        }
+    ]
+}
